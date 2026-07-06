@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNest - Your Reading Haven</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* ================================================= */
+        /* ==              CSS STYLING SECTION            == */
+        /* ================================================= */
+
+        :root {
+            --primary-color: #4A90E2; /* Modern Blue */
+            --secondary-color: #79C2D0; 
+            --accent-color: #F8B400; /* Gold/Yellow */
+            --text-color: #333;
+            --light-bg: #F9F9F9;
+            --dark-bg: #2C3E50; /* Dark Footer */
+            --white: #FFFFFF;
+            --success-color: #28a745; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 5%;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+        
+        .nav-icons a {
+            margin-left: 20px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            border-radius: 50%;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        /* --- Home Page Enhancements --- */
+        
+        /* Banner Section */
+        .hero-banner {
+            /* Kept a high-quality placeholder image for the banner */
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1549417229-323f4c776263?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 100px 20px;
+            margin-bottom: 50px;
+            border-radius: 10px; 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-banner h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-banner p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            background-color: var(--white);
+            border-radius: 50px; 
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .search-container input {
+            flex-grow: 1;
+            padding: 12px 20px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-container button {
+            background-color: var(--accent-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .search-container button:hover {
+            background-color: #DDAA00;
+        }
+        
+        /* --- General Layout & Headings --- */
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        
+        /* --- USP Section --- */
+        .usp-section {
+            background-color: var(--white);
+            padding: 50px 20px;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .usp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .usp-item i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: var(--light-bg);
+            border-radius: 50%;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .usp-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        /* --- Book Grid --- */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .book-card {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-card img {
+            max-width: 100%;
+            height: 200px; /* Fixed Height for Book Covers */
+            width: auto;
+            object-fit: contain; /* Ensures the whole book cover is visible */
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .book-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+
+        .book-card p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .book-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 15px !important;
+        }
+
+        .add-to-cart-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-weight: 600;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #3C7DCF;
+        }
+        
+        /* --- Form Styling (General & Modal) --- */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        /* Fix for Password/Email Box Size */
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"], /* Added for consistency */
+        .form-group input[type="tel"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box; /* Ensure padding doesn't increase total width */
+        }
+
+
+        .submit-btn {
+            background-color: var(--success-color);
+            color: var(--white);
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e7e34;
+        }
+        
+        /* --- CRITICAL: Modal Styling --- */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 2000; /* Higher than header */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.6);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            margin: 5% auto; 
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--text-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
+        /* Cart Modal Styles */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            margin-bottom: 10px;
+        }
+
+        .cart-item-details {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .cart-controls {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+
+        .cart-summary {
+            text-align: right;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px solid var(--primary-color);
+        }
+
+        .checkout-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            font-weight: 600;
+        }
+        
+        /* Checkout Modal Styles */
+        .checkout-step {
+            padding: 10px 0;
+        }
+        
+        .step-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+
+        .step-buttons button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        #prevStep {
+            background-color: #95a5a6;
+            color: var(--white);
+        }
+
+        #nextStep {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+        
+        #placeOrderBtn {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+
+        .payment-option {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .payment-option:hover {
+            border-color: var(--primary-color);
+            background-color: var(--light-bg);
+        }
+        
+        .payment-option label {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        
+        .payment-option i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+        
+        .payment-option input[type="radio"] {
+            margin-right: 10px;
+            accent-color: var(--primary-color);
+        }
+
+
+        /* --- Footer Styling --- */
+        footer {
+            background-color: var(--dark-bg);
+            color: #ecf0f1;
+            padding: 40px 5%;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            width: 23%; 
+            margin-bottom: 20px;
+            min-width: 200px;
+        }
+        
+        .footer-section h4 {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            font-size: 0.95rem;
+            display: block; 
+            margin-bottom: 8px;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            color: #bdc3c7;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-banner h1 {
+                font-size: 2.2rem;
+            }
+            .footer-section {
+                width: 48%; 
+                margin-bottom: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-section {
+                width: 100%; 
+            }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">BookNest</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showPage('home-section')">Home</a></li>
+                <li><a href="#" onclick="showPage('shop-section')">Shop</a></li>
+                <li><a href="#" onclick="showPage('about-section')">About Us</a></li>
+                <li><a href="#" onclick="showPage('contact-section')">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" onclick="openModal('loginModal')" title="Login/Sign Up"><i class="fas fa-user"></i></a>
+                <a href="#" onclick="openModal('cartModal')" title="Cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-item-count">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        
+        <section id="home-section" class="page-content">
+            <div class="hero-banner">
+                <h1>📚 A Treasure Trove of Knowledge and Inspiration</h1>
+                <p>Discover exciting stories, profound knowledge, and unforgettable experiences. Find your next great read today!</p>
+                <div class="search-container">
+                    <input type="text" id="home-search-input" placeholder="Search book title, author, or subject..." aria-label="Book Search Input">
+                    <button onclick="searchBooks()"><i class="fas fa-search"></i> Search</button>
+                </div>
+            </div>
+
+            <h2>✨ Featured Books (Top Picks)</h2>
+            <div class="book-grid" id="featured-books-container">
+                </div>
+            
+            <div class="usp-section">
+                <h2>Why Choose BookNest?</h2>
+                <div class="usp-grid">
+                    <div class="usp-item">
+                        <i class="fas fa-truck-fast"></i>
+                        <h3>Fast Delivery</h3>
+                        <p>Shipping across India within 3-5 days.</p>
+                    </div>
+                    <div class="usp-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Secure Payments</h3>
+                        <p>All transactions are 100% secure and encrypted.</p>
+                    </div>
+                    <div class="usp-item">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Best Quality</h3>
+                        <p>We guarantee only original and high-quality books.</p>
+                    </div>
+                    <div class="usp-item">
+                        <i class="fas fa-headset"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Our dedicated team is ready to assist you.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="shop-section" class="page-content" style="display: none;">
+            <h2>📖 All Our Books</h2>
+            <div class="book-grid" id="all-books-container">
+                </div>
+        </section>
+
+        <section id="about-section" class="page-content" style="display: none;">
+            <h2>💡 About BookNest</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: justify; padding: 20px; background-color: var(--white); border-radius: 8px;">
+                <p><strong>"BookNest"</strong> is more than just an online bookstore; it's a haven for knowledge and stories. Our mission is to provide readers with the best books tailored to their interests. Established in 2025, we wanted to create a place where everyone could easily find their next favorite book, be it fiction, non-fiction, academic, or children's books.</p>
+                <p>We believe that books can change the world, and we are committed to fostering this change. Our library boasts over 40 carefully selected books, ensuring quality and diversity. Thank you for being a part of the BookNest family!</p>
+            </div>
+        </section>
+
+        <section id="contact-section" class="page-content" style="display: none;">
+            <h2>📞 Contact Us</h2>
+            <form id="contact-form" style="max-width: 600px; margin: 0 auto; padding: 20px; background-color: var(--white); border-radius: 8px;">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </section>
+        
+    </main>
+    
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('cartModal')">&times;</span>
+            <h2>🛒 Your Shopping Cart</h2>
+            <div id="cart-items-list">
+                </div>
+            <p id="empty-cart-message" style="text-align: center; margin-top: 20px; display: none;">Your cart is empty.</p>
+            <div class="cart-summary">
+                <p>Total Price: ₹<span id="cart-total-price">0.00</span></p>
+                <button class="checkout-btn" onclick="openModal('checkoutModal')" id="cartCheckoutBtn" disabled>Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('loginModal')">&times;</span>
+            <h2>👤 Login / Sign Up</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email:</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password:</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+                <p style="margin-top: 15px; text-align: center; font-size: 0.9rem;">
+                    Don't have an account? <a href="#" onclick="alert('Sign Up functionality goes here!')" style="color: var(--primary-color);">Sign Up</a>
+                </p>
+            </form>
+        </div>
+    </div>
+    
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('checkoutModal')">&times;</span>
+            <h2 id="checkout-title">Checkout - Step 1: Summary</h2>
+            
+            <div id="step1" class="checkout-step" style="display: block;">
+                <h3>Your Order:</h3>
+                <div id="checkout-summary-details">
+                    </div>
+                <div class="cart-summary" style="margin-top: 15px; padding: 15px;">
+                    <p>Total Payment Amount: ₹<span id="checkout-total-price">0.00</span></p>
+                </div>
+            </div>
+            
+            <div id="step2" class="checkout-step">
+                <h3>Shipping Address Details:</h3>
+                <form id="addressForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="tel" id="phone" pattern="[0-9]{10}" title="10 digit phone number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressLine1">Address Line 1:</label>
+                        <input type="text" id="addressLine1" placeholder="House/Flat No., Building" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressLine2">Address Line 2 (Optional):</label>
+                        <input type="text" id="addressLine2" placeholder="Street, Landmark">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pinCode">Pincode:</label>
+                        <input type="text" id="pinCode" pattern="\d{6}" title="6 digit Pincode" required>
+                    </div>
+                </form>
+            </div>
+            
+            <div id="step3" class="checkout-step">
+                <h3>Select Payment Option:</h3>
+                <div id="paymentOptions">
+                    
+                    <div class="payment-option" onclick="selectPayment('cod')">
+                        <input type="radio" name="payment" value="cod" id="payment_cod" checked>
+                        <label for="payment_cod">
+                            <i class="fas fa-handshake"></i>
+                            Cash on Delivery (COD)
+                        </label>
+                    </div>
+                    
+                    <div class="payment-option" onclick="selectPayment('upi')">
+                        <input type="radio" name="payment" value="upi" id="payment_upi">
+                        <label for="payment_upi">
+                            <i class="fas fa-qrcode"></i>
+                            UPI / PhonePe / GPay
+                        </label>
+                    </div>
+                    
+                    <div class="payment-option" onclick="selectPayment('card')">
+                        <input type="radio" name="payment" value="card" id="payment_card">
+                        <label for="payment_card">
+                            <i class="fas fa-credit-card"></i>
+                            Credit/Debit Card
+                        </label>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="step-buttons">
+                <button id="prevStep" onclick="changeStep(-1)" style="display: none;">&larr; Previous</button>
+                <button id="nextStep" onclick="changeStep(1)">Next &rarr;</button>
+                <button id="placeOrderBtn" onclick="placeOrder()" style="display: none;">Place Order</button>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            
+            <div class="footer-section">
+                <h4>BookNest</h4>
+                <p>Your online haven for knowledge and inspiration.</p>
+                <p>Our goal is to bring the best books to every reader.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="#" onclick="showPage('home-section')">Home</a>
+                <a href="#" onclick="showPage('shop-section')">All Books / Shop</a>
+                <a href="#">Track Order</a>
+                <a href="#">Gift Cards</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Support</h4>
+                <a href="#">FAQ / Help Center</a>
+                <a href="#">Return & Refund Policy</a>
+                <a href="#">Shipping Information</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <p><i class="fas fa-map-marker-alt"></i> Delhi, India</p>
+                <p><i class="fas fa-envelope"></i> support@booknest.in</p>
+                <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                
+                <div class="social-icons" style="margin-top: 15px;">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 BookNest. All Rights Reserved. | Website Design by Gemini AI</p>
+        </div>
+    </footer>
+
+
+    <script>
+        /* ================================================= */
+        /* ==            JAVASCRIPT FUNCTIONALITY         == */
+        /* ================================================= */
+
+        // --- 1. Book Data (40 Items) ---
+        // Online image links for book covers are now used.
+        const BOOKS_DATA = [
+            { id: 1, title: "The Alchemist", author: "Paulo Coelho", price: 350.00, isFeatured: true, image: "https://i.ibb.co/6y4t4m0/the-alchemist.png" },
+            { id: 2, title: "Mahabharata", author: "Vyasa", price: 800.00, isFeatured: true, image: "https://i.ibb.co/3sX8mY8/mahabharata.png" },
+            { id: 3, title: "Rich Dad Poor Dad", author: "Robert Kiyosaki", price: 450.00, isFeatured: true, image: "https://i.ibb.co/tCg9F79/rich-dad.png" },
+            { id: 4, title: "Harry Potter (Set)", author: "J.K. Rowling", price: 2500.00, isFeatured: true, image: "https://i.ibb.co/Q8Q4w25/harry-potter.png" },
+            { id: 5, title: "The Power of Now", author: "Eckhart Tolle", price: 410.00, isFeatured: false, image: "https://i.ibb.co/P4h805v/power-of-now.png" },
+            { id: 6, title: "The Art of Living", author: "Ravi Sharma", price: 380.00, isFeatured: false, image: "https://i.ibb.co/x1b3V8w/art-of-living.png" },
+            { id: 7, title: "The Secret", author: "Rhonda Byrne", price: 550.00, isFeatured: false, image: "https://i.ibb.co/jR0n925/the-secret.png" },
+            { id: 8, title: "Ignited Minds", author: "A.P.J. Abdul Kalam", price: 399.00, isFeatured: true, image: "https://i.ibb.co/2k7zK3B/ignited-minds.png" },
+            { id: 9, title: "The Bhagavad Gita", author: "Vyasa", price: 600.00, isFeatured: false, image: "https://i.ibb.co/QNY8R94/bhagavad-gita.png" },
+            { id: 10, title: "Peace of Mind", author: "Sadhguru", price: 320.00, isFeatured: false, image: "https://i.ibb.co/S6D8y0v/peace-of-mind.png" },
+            { id: 11, title: "The Catcher in the Rye", author: "J.D. Salinger", price: 300.00, isFeatured: false, image: "https://i.ibb.co/Yy1k9Qz/catcher-in-the-rye.png" },
+            { id: 12, title: "To Kill a Mockingbird", author: "Harper Lee", price: 340.00, isFeatured: false, image: "https://i.ibb.co/8Y4L1kP/to-kill-a-mockingbird.png" },
+            { id: 13, title: "1984", author: "George Orwell", price: 370.00, isFeatured: false, image: "https://i.ibb.co/7C2z1YQ/1984.png" },
+            { id: 14, title: "A Brief History of Time", author: "Stephen Hawking", price: 500.00, isFeatured: false, image: "https://i.ibb.co/M9J7wWj/brief-history-of-time.png" },
+            { id: 15, title: "Sapiens", author: "Yuval Noah Harari", price: 650.00, isFeatured: false, image: "https://i.ibb.co/n1g5w3j/sapiens.png" },
+            { id: 16, title: "Atomic Habits", author: "James Clear", price: 499.00, isFeatured: false, image: "https://i.ibb.co/g3G9T2D/atomic-habits.png" },
+            { id: 17, title: "The Little Prince", author: "A. de Saint-Exupéry", price: 290.00, isFeatured: false, image: "https://i.ibb.co/Qf4S8kY/little-prince.png" },
+            { id: 18, title: "The Seven Habits", author: "Stephen Covey", price: 520.00, isFeatured: false, image: "https://i.ibb.co/t4r0qR3/seven-habits.png" },
+            { id: 19, title: "Theory of Everything", author: "Stephen Hawking", price: 480.00, isFeatured: false, image: "https://i.ibb.co/9G7M7R5/theory-of-everything.png" },
+            { id: 20, title: "Interpreter of Maladies", author: "Jhumpa Lahiri", price: 330.00, isFeatured: false, image: "https://i.ibb.co/1K7n0y7/interpreter-of-maladies.png" },
+            { id: 21, title: "Wings of Fire", author: "A.P.J. Abdul Kalam", price: 430.00, isFeatured: false, image: "https://i.ibb.co/BPL23Qk/wings-of-fire.png" },
+            { id: 22, title: "The Devil's Dictionary", author: "Ambrose Bierce", price: 290.00, isFeatured: false, image: "https://i.ibb.co/y4p1R3y/devils-dictionary.png" },
+            { id: 23, title: "Microbiology Fundamentals", author: "P. Kumar", price: 950.00, isFeatured: false, image: "https://i.ibb.co/b3qH4Z8/microbiology.png" },
+            { id: 24, title: "Human Anatomy", author: "Dr. Sharma", price: 1100.00, isFeatured: false, image: "https://i.ibb.co/q9M1s1M/human-anatomy.png" },
+            { id: 25, title: "Autobiography of a Yogi", author: "P. Yogananda", price: 550.00, isFeatured: false, image: "https://i.ibb.co/rQ2X9R5/yogi.png" },
+            { id: 26, title: "The Buddha and His Dhamma", author: "B.R. Ambedkar", price: 470.00, isFeatured: false, image: "https://i.ibb.co/C0z8H0s/buddha-dhamma.png" },
+            { id: 27, title: "The Jungle Book", author: "Rudyard Kipling", price: 360.00, isFeatured: false, image: "https://i.ibb.co/8Y4L1kP/to-kill-a-mockingbird.png" }, // Reused Mockingbird cover
+            { id: 28, title: "Alice in Wonderland", author: "Lewis Carroll", price: 320.00, isFeatured: false, image: "https://i.ibb.co/W5L2pYy/alice-in-wonderland.png" },
+            { id: 29, title: "Don't Stop Believing", author: "P. Singh", price: 299.00, isFeatured: false, image: "https://i.ibb.co/Xz9w3yQ/dont-stop.png" },
+            { id: 30, title: "Two States", author: "Chetan Bhagat", price: 210.00, isFeatured: false, image: "https://i.ibb.co/v4d7d1B/two-states.png" },
+            { id: 31, title: "How to Win Friends", author: "Dale Carnegie", price: 440.00, isFeatured: false, image: "https://i.ibb.co/k5J0yPz/win-friends.png" },
+            { id: 32, title: "Think and Grow Rich", author: "Napoleon Hill", price: 510.00, isFeatured: false, image: "https://i.ibb.co/N7D2W2g/think-rich.png" },
+            { id: 33, title: "The Da Vinci Code", author: "Dan Brown", price: 450.00, isFeatured: false, image: "https://i.ibb.co/hV7C3g4/da-vinci-code.png" },
+            { id: 34, title: "Gone Girl", author: "Gillian Flynn", price: 380.00, isFeatured: false, image: "https://i.ibb.co/q5k2tF0/gone-girl.png" },
+            { id: 35, title: "Educated", author: "Tara Westover", price: 590.00, isFeatured: false, image: "https://i.ibb.co/N6L1T3y/educated.png" },
+            { id: 36, title: "The Silent Patient", author: "Alex Michaelides", price: 390.00, isFeatured: false, image: "https://i.ibb.co/S1j5Mv2/silent-patient.png" },
+            { id: 37, title: "Lord of the Flies", author: "William Golding", price: 310.00, isFeatured: false, image: "https://i.ibb.co/jR0n925/the-secret.png" }, // Reused The Secret cover
+            { id: 38, title: "Animal Farm", author: "George Orwell", price: 250.00, isFeatured: false, image: "https://i.ibb.co/8Y4L1kP/to-kill-a-mockingbird.png" }, // Reused Mockingbird cover
+            { id: 39, title: "The Hobbit", author: "J.R.R. Tolkien", price: 530.00, isFeatured: false, image: "https://i.ibb.co/5c5r6vK/the-hobbit.png" },
+            { id: 40, title: "The Martian", author: "Andy Weir", price: 470.00, isFeatured: false, image: "https://i.ibb.co/n1g5w3j/sapiens.png" }, // Reused Sapiens cover
+        ];
+
+
+        let currentStep = 1;
+        
+        // --- 2. Page Navigation and Setup ---
+        const pageSections = document.querySelectorAll('.page-content');
+        
+        function showPage(pageId) {
+            pageSections.forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'block';
+            
+            if (pageId === 'shop-section') {
+                renderBooks(BOOKS_DATA, 'all-books-container');
+                const searchHeading = document.getElementById('shop-section').querySelector('h2');
+                searchHeading.textContent = `📖 All Our Books`;
+            } else if (pageId === 'home-section') {
+                const featuredBooks = BOOKS_DATA.filter(book => book.isFeatured);
+                renderBooks(featuredBooks, 'featured-books-container');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home-section');
+            updateCartCount();
+        });
+
+
+        // --- 3. Render Books & Search ---
+        function renderBooks(books, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = ''; 
+
+            books.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'book-card';
+                bookCard.innerHTML = `
+                    <img src="${book.image}" alt="${book.title}">
+                    <div>
+                        <h3>${book.title}</h3>
+                        <p>Author: ${book.author}</p>
+                        <p class="book-price">₹${book.price.toFixed(2)}</p>
+                        <button class="add-to-cart-btn" onclick="addToCart(${book.id})">Add to Cart</button>
+                    </div>
+                `;
+                container.appendChild(bookCard);
+            });
+        }
+        
+        function searchBooks() {
+            const searchTerm = document.getElementById('home-search-input').value.toLowerCase();
+            if (!searchTerm) {
+                alert('Please enter a search term.');
+                return;
+            }
+            showPage('shop-section');
+            const filteredBooks = BOOKS_DATA.filter(book => 
+                book.title.toLowerCase().includes(searchTerm) || 
+                book.author.toLowerCase().includes(searchTerm)
+            );
+            
+            const container = document.getElementById('all-books-container');
+            const searchHeading = document.getElementById('shop-section').querySelector('h2');
+            
+            if (filteredBooks.length > 0) {
+                 searchHeading.textContent = `Search Results for "${searchTerm}"`;
+                 renderBooks(filteredBooks, 'all-books-container');
+            } else {
+                 searchHeading.textContent = `Search Results for "${searchTerm}"`;
+                 container.innerHTML = `<p style="text-align: center; font-size: 1.2rem; padding: 50px;">No results found for "${searchTerm}".</p>`;
+            }
+        }
+
+
+        // --- 4. Cart Management (LocalStorage) ---
+        
+        function getCart() {
+            const cartJson = localStorage.getItem('bookNestCart');
+            return cartJson ? JSON.parse(cartJson) : [];
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('bookNestCart', JSON.stringify(cart));
+            updateCartCount();
+        }
+
+        function updateCartCount() {
+            const cart = getCart();
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-item-count').textContent = totalItems;
+            
+            const checkoutBtn = document.getElementById('cartCheckoutBtn');
+            if (checkoutBtn) {
+                 checkoutBtn.disabled = totalItems === 0;
+            }
+        }
+
+        window.removeFromCart = function(bookId) {
+            let cart = getCart();
+            cart = cart.filter(item => item.id !== bookId);
+            saveCart(cart);
+            renderCart(); 
+        }
+        
+        window.updateQuantity = function(bookId, element) {
+            let cart = getCart();
+            const quantity = parseInt(element.value);
+            const item = cart.find(i => i.id === bookId);
+            
+            if (item && quantity > 0) {
+                item.quantity = quantity;
+            } else if (item && quantity === 0) {
+                 removeFromCart(bookId);
+                 return;
+            }
+
+            saveCart(cart);
+            renderCart(); 
+        }
+
+
+        function renderCart() {
+            const cart = getCart();
+            const listContainer = document.getElementById('cart-items-list');
+            const totalPriceSpan = document.getElementById('cart-total-price');
+            const emptyMessage = document.getElementById('empty-cart-message');
+            
+            listContainer.innerHTML = '';
+            let totalPrice = 0;
+
+            if (cart.length === 0) {
+                emptyMessage.style.display = 'block';
+                totalPriceSpan.textContent = '0.00';
+                return;
+            }
+            
+            emptyMessage.style.display = 'none';
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+
+                const cartItemDiv = document.createElement('div');
+                cartItemDiv.className = 'cart-item';
+                cartItemDiv.innerHTML = `
+                    <div class="cart-item-details">
+                        <img src="${item.image}" alt="${item.title}" style="width: 80px; height: 80px; object-fit: contain; margin-right: 15px; border-radius: 4px;">
+                        <div>
+                            <strong>${item.title}</strong>
+                            <p>₹${item.price.toFixed(2)} x ${item.quantity}</p>
+                        </div>
+                    </div>
+                    <div class="cart-controls">
+                        <input type="number" min="1" value="${item.quantity}" 
+                               style="width: 50px; text-align: center; margin-right: 10px;"
+                               onchange="updateQuantity(${item.id}, this)">
+                        <span style="margin-left: 15px; font-weight: 600;">₹${itemTotal.toFixed(2)}</span>
+                        <button class="remove-btn" onclick="removeFromCart(${item.id})" title="Remove">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                listContainer.appendChild(cartItemDiv);
+            });
+
+            totalPriceSpan.textContent = totalPrice.toFixed(2);
+        }
+        
+        function addToCart(bookId) {
+            const book = BOOKS_DATA.find(b => b.id === bookId);
+            let cart = getCart();
+            const existingItem = cart.find(item => item.id === bookId);
+
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id: book.id, title: book.title, price: book.price, image: book.image, quantity: 1 });
+            }
+
+            saveCart(cart);
+            alert(`${book.title} added to cart!`);
+            if (document.getElementById('cartModal').style.display === 'flex') {
+                renderCart();
+            }
+        }
+
+
+        // --- 5. Modal & Form Submissions ---
+        window.openModal = function(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modalId === 'cartModal') {
+                renderCart();
+            } else if (modalId === 'checkoutModal') {
+                closeModal('cartModal'); 
+                resetCheckout();
+            }
+            modal.style.display = 'flex';
+        }
+
+        window.closeModal = function(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+        
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Message sent successfully! We will contact you soon.');
+            this.reset();
+        });
+        
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Login Successful! (This is a demo)');
+            closeModal('loginModal');
+            this.reset();
+        });
+
+        // ===========================================
+        // == CHECKOUT MULTI-STEP LOGIC             ==
+        // ===========================================
+        
+        function updateCheckoutStepUI() {
+            const steps = [
+                document.getElementById('step1'), 
+                document.getElementById('step2'), 
+                document.getElementById('step3')
+            ];
+            const title = document.getElementById('checkout-title');
+            const prevBtn = document.getElementById('prevStep');
+            const nextBtn = document.getElementById('nextStep');
+            const placeOrderBtn = document.getElementById('placeOrderBtn');
+            
+            // Hide all step containers
+            steps.forEach(step => step.style.display = 'none');
+            // Show current step container
+            steps[currentStep - 1].style.display = 'block';
+            
+            // Update Title
+            const titles = ["Checkout - Step 1: Summary", "Checkout - Step 2: Address Details", "Checkout - Step 3: Payment"];
+            title.textContent = titles[currentStep - 1];
+
+            // Update Buttons
+            prevBtn.style.display = currentStep > 1 ? 'block' : 'none';
+            nextBtn.style.display = currentStep < 3 ? 'block' : 'none';
+            placeOrderBtn.style.display = currentStep === 3 ? 'block' : 'none';
+            
+            // If on step 1, render summary details
+            if (currentStep === 1) {
+                renderCheckoutSummary();
+            }
+        }
+        
+        window.changeStep = function(direction) {
+            if (direction === 1) {
+                // Validate current step before moving forward
+                if (currentStep === 2 && !validateAddressForm()) {
+                    alert("Please fill in all required shipping address fields correctly.");
+                    return;
+                }
+            }
+            
+            currentStep += direction;
+            
+            if (currentStep < 1) currentStep = 1;
+            if (currentStep > 3) currentStep = 3;
+            
+            updateCheckoutStepUI();
+        }
+        
+        function resetCheckout() {
+            currentStep = 1;
+            const addressForm = document.getElementById('addressForm');
+            if (addressForm) addressForm.reset();
+            const codRadio = document.querySelector('input[name="payment"][value="cod"]');
+            if (codRadio) codRadio.checked = true; 
+            updateCheckoutStepUI();
+        }
+        
+        function validateAddressForm() {
+            const form = document.getElementById('addressForm');
+            if (!form.checkValidity()) {
+                form.reportValidity(); 
+                return false;
+            }
+            return true;
+        }
+        
+        function renderCheckoutSummary() {
+            const cart = getCart();
+            const summaryDetails = document.getElementById('checkout-summary-details');
+            const totalPriceSpan = document.getElementById('checkout-total-price');
+            
+            summaryDetails.innerHTML = '';
+            let totalPrice = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalPrice += itemTotal;
+                
+                const summaryItem = document.createElement('div');
+                summaryItem.innerHTML = `<p style="display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; padding: 5px 0;">
+                    <span>${item.title} (x${item.quantity})</span>
+                    <span>₹${itemTotal.toFixed(2)}</span>
+                </p>`;
+                summaryDetails.appendChild(summaryItem);
+            });
+            
+            totalPriceSpan.textContent = totalPrice.toFixed(2);
+        }
+        
+        window.selectPayment = function(method) {
+            document.getElementById(`payment_${method}`).checked = true;
+        }
+
+        window.placeOrder = function() {
+            const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+            const addressForm = document.getElementById('addressForm');
+            const address = new FormData(addressForm);
+            const cart = getCart();
+
+            let orderDetails = {
+                items: cart,
+                total: document.getElementById('checkout-total-price').textContent,
+                address: Object.fromEntries(address),
+                paymentMethod: selectedPayment
+            };
+
+            // Display success message
+            alert(`Order Successfully Placed!
+            \nTotal Amount: ₹${orderDetails.total}
+            \nPayment Method: ${selectedPayment.toUpperCase()}
+            \nYour order will be shipped soon. Thank you for shopping with BookNest!`);
+            
+            // Clear cart and close modal
+            localStorage.removeItem('bookNestCart');
+            updateCartCount();
+            closeModal('checkoutModal');
+            showPage('home-section');
+        }
+
+    </script>
+</body>
+</html>
